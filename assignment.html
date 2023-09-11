@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notepad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-color: whitesmoke;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .container .heading {
+            font-size: 3em;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            padding: 1rem 1rem;
+            color: rgb(8, 55, 56);
+        }
+
+
+        .but {
+            margin-top: .35rem;
+            /* width: 100%; */
+        }
+
+        .but button {
+            padding: 1em 5em;
+            background-color: rgb(0, 119, 255);
+            color: white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-weight: 400;
+            width: 35rem;
+
+        }
+        textarea{
+            padding: 2em 2em;
+            margin-top: .5rem;
+            /* margin: 2rem auto; */
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="heading">
+            <h2>Notepad</h2>
+        </div>
+        <textarea name="" id="" cols="170" rows="30" class="js-input"></textarea>
+        <div class="but">
+            <button class="js-save" onclick="set();">save</button>
+            <button class="js-clear" onclick="clearArea();">clear</button>
+        </div>
+        
+    </div>
+
+    <script>
+        let val1 = localStorage.getItem('store');
+        if(val1){
+            document.querySelector('.js-input').value = val1;
+        }
+
+        function set() {
+            let val = document.querySelector('.js-input').value;
+            if(val.trim()!=''){
+
+                localStorage.setItem('store',val);
+            }
+            else{
+
+                alert('Nothing to save here!!');
+            }
+        }
+
+        function clearArea(){
+            localStorage.removeItem('store');
+            document.querySelector('.js-input').value = '';
+
+        }
+
+    </script>
+</body>
+
+</html>
